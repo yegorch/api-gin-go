@@ -1,3 +1,5 @@
+package main
+
 import (
 	"fmt"
 	"net/http"
@@ -28,7 +30,7 @@ func main() {
 		if err := c.ShouldBind(&data); err != nil {
 			fmt.Println(err)
 			c.JSON(http.StatusBadRequest, gin.H{
-				"error": fmt.Spintf("%v", err),
+				"error": fmt.Sprintf("%v", err),
 			})
 
 		} else {
@@ -38,6 +40,5 @@ func main() {
 		}
 	})
 
-	r.run("localhost:8080")
+	r.Run("localhost:8080")
 }
-
