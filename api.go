@@ -15,11 +15,14 @@ type TestModel struct {
 func main() {
 	r := gin.Default()
 	r.GET("", func(c *gin.Context) {
-		c.String(http.StatusOK, "API")
+		c.JSON(http.StatusOK, gin.H{
+			"responseData": "API data"
+		})
+		// c.String(http.StatusOK, "API")
 	})
 
-	r.GET("/:value", func(c *gin.Context) {
-		var val = c.Param("value")
+	r.GET("/:name", func(c *gin.Context) {
+		var val = c.Param("name")
 		c.JSON(http.StatusOK, gin.H{
 			"value": val,
 		})
